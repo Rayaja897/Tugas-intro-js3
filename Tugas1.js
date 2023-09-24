@@ -1,4 +1,4 @@
-const cekHariKerja = (day) => {
+const checkWorkingDays = (day) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             const dataDay = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat']
@@ -8,16 +8,16 @@ const cekHariKerja = (day) => {
             if (cek) {
                 resolve(cek)
             } else {
-                reject(new Error('Hari ini bukan hari kerja'))
+                reject(new Error('Today is not a working day'))
             }
         }, 3000);
     })
 }
 
 //menggunakan then catch
-cekHariKerja('Selasa').then((result) => {
-    console.log(`Hari : ${result}`); //menerima parameter result yang mengambil nilai dari resolve
-    console.log('Hari ini hari kerja');
+checkWorkingDays('Selasa').then((result) => {
+    console.log(result); //menerima parameter result yang mengambil nilai dari resolve
+    console.log('Today is a working day');
 }).catch((err)=>{
     console.log(err); //menerima parameter err yang mengambil nilai dari reject
 })
@@ -25,9 +25,9 @@ cekHariKerja('Selasa').then((result) => {
 //menggunakan try catch
 const tryCatch = async () => {
     try {   //coba apakah kode ini ada error atau tidak
-        const callPromise = await cekHariKerja('Sabtu')
-        console.log(`Hari : ${callPromise}`);
-        console.log('Hari ini hari kerja');
+        const callPromise = await checkWorkingDays('Sabtu')
+        console.log(callPromise);
+        console.log('Today is a working day');
     } catch(Error){
         console.log(Error); //jika error akan menampilkan error
     }
